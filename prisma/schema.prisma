@@ -10,3 +10,13 @@ datasource db {
   url = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
+
+model Data {
+  id    Int    @id @default(autoincrement())
+  title String
+  description  String
+  image String
+  price Int
+  lat Float
+  lng Float
+}
