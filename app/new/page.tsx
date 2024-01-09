@@ -50,7 +50,7 @@ function NewPage() {
             <label htmlFor="price">Price</label>
             <input type="number" name="price"/>
             {state?.errors && <p className='warning'>{state.errors.price}</p>}
-            <button className='my-btn my-btn_primary'>Add</button>
+            <button className="my-btn my-btn_primary">Add</button>
         </div>
         <div className="form-group">
             <label htmlFor="lat">X</label>

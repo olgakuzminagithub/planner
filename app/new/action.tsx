@@ -7,12 +7,12 @@ import {z} from 'zod'
 import { toStructuredError } from "zod-structured-error"
 
 const shema = z.object({
-    title: z.string(),
+    title: z.string().min(3, {message: "Title require 3 characters"}),
     description: z.string(),
-    image: z.string(),
-    price: z.number(),
-    lat: z.number(),
-    lng: z.number(),
+    image: z.string().min(5, {message: "Image is require"}),
+    price: z.number().min(1, {message: "Price is require"}),
+    lat: z.number().min(1, {message: "Shoose a dots on the map"}),
+    lng: z.number().min(1, {message: "Shoose a dots on the map"}),
 })
 
 export async function createNewItem (prevState: any, formData: FormData) {

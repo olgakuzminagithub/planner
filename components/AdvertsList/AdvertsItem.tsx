@@ -10,7 +10,8 @@ export default function AdvertItem({advert}: AdvertItemProps) {
     <div className="advert">
           <h3>{advert.title}</h3>
           <Image src={`/${advert.image}`} width={200} height={150} alt={advert.title} priority={true}/>
-          <p>Price: {advert.price}$</p>
+          <p>{advert.description}</p>
+          <span>Price: {advert.price}$</span>
     </div>
   )
 }

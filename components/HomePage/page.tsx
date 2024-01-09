@@ -41,6 +41,7 @@ export default function HomePage({adverts}: HomePageProps) {
             <Map adverts={adverts} setClickAd={setClickAd} setBounds={setBounds}/>
         </div>
         <div className="advert-list">
+            <p>In this area searched {filteredAdverts.length} adverts</p>
             {bounds && <p>In this area searched {filteredAdverts.length} adverts</p>}
             {clickAd && <div className='my-btn my-btn_primary btn-show-all' onClick={() => setClickAd(null)}>Show all</div>}
             <AdvertList adverts={filteredAdverts}/>
