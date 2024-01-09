@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css"
 import style from "./Map.module.css"
 import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
+import { Icon } from "leaflet"
 import { MapContainer, TileLayer, Marker, useMapEvents} from 'react-leaflet';
 import type { Data } from '@prisma/client';
 
@@ -23,7 +24,17 @@ function MyComponent({setBounds}: any) {
 }
 
 
-export default function LeafletMap({adverts, setClickAd, setBounds}: any) {
+export default function LeafletMap({adverts, clickAd, setClickAd, setBounds}: any) {
+  const myIcon = new Icon({
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/727/727606.png",
+    iconSize: [32, 32]
+  });
+  const myIcon2 = new Icon({
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/7976/7976202.png",
+    iconSize: [32, 32]
+  });
+
+  
   return (
     <MapContainer 
       className={style.map}
@@ -36,13 +47,13 @@ export default function LeafletMap({adverts, setClickAd, setBounds}: any) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {adverts.map((advert: Data)  => 
-
         <Marker 
           position={[advert.lat, advert.lng]} 
           key={advert.id} 
+          icon={clickAd && advert.id === clickAd.id ? myIcon2 : myIcon}
           eventHandlers={{
             click: (e) => {
-               setClickAd({"lat": advert.lat, "lng": advert.lng })
+               setClickAd({"id": advert.id, "lat": advert.lat, "lng": advert.lng })
             },
           }}
         >
